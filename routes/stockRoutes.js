@@ -31,4 +31,14 @@ router.post("/add", async (req, res) => {
   }
 });
 
+// Fetch all stock (NEWLY ADDED ROUTE)
+router.get("/", async (req, res) => {
+  try {
+    const stock = await Tyre.find(); // Fetch all stock from the database
+    res.json(stock);
+  } catch (error) {
+    res.status(500).json({ error: "Error fetching stock" });
+  }
+});
+
 module.exports = router;
